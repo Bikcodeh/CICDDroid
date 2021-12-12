@@ -29,13 +29,23 @@ class MainActivity : AppCompatActivity() {
                 val interestRate = interestEditText.text.toString().toFloat()
                 val currentAge = ageEditText.text.toString().toInt()
                 val retirementAge = retirementEditText.text.toString().toInt()
+                val monthly = monthlySavingsEditText.text.toString().toFloat()
+                val current = currentEditText.text.toString().toFloat()
+
+                val properties: HashMap<String, String> = HashMap<String, String>().apply {
+                    put("interest_rate", interestRate.toString())
+                    put("current_age", currentAge.toString())
+                    put("retirement_age", retirementAge.toString())
+                    put("monthly", monthly.toString())
+                    put("current", current.toString())
+                }
 
                 if(interestRate <= 0) {
-                    Analytics.trackEvent("wrong_interest_rate")
+                    Analytics.trackEvent("wrong_interest_rate", properties)
                 }
 
                 if(retirementAge <= currentAge) {
-                    Analytics.trackEvent("wrong_age")
+                    Analytics.trackEvent("wrong_age", properties)
                 }
             }
         }
