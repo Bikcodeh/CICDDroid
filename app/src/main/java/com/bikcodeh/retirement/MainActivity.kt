@@ -2,14 +2,20 @@ package com.bikcodeh.retirement
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.bikcodeh.retirement.databinding.ActivityMainBinding
 import com.microsoft.appcenter.AppCenter
 import com.microsoft.appcenter.analytics.Analytics
 import com.microsoft.appcenter.crashes.Crashes
+import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var _binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        _binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(_binding.root)
 
         AppCenter.start(
             application,
@@ -17,5 +23,10 @@ class MainActivity : AppCompatActivity() {
             Analytics::class.java,
             Crashes::class.java
         )
+
+        _binding.calculateButton.setOnClickListener {
+            //throw Exception("Something wrong happened!")
+            Crashes.generateTestCrash()
+        }
     }
 }
