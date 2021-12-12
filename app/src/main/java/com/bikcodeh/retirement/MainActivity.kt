@@ -47,6 +47,8 @@ class MainActivity : AppCompatActivity() {
                 if(retirementAge <= currentAge) {
                     Analytics.trackEvent("wrong_age", properties)
                 }
+
+                resultTextView.text = "At the current rate of $interestRate, saving $monthly with your current monthly savings you will have \$1,000,000 by 65."
             }
         }
     }
