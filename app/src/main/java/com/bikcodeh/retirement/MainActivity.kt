@@ -24,9 +24,20 @@ class MainActivity : AppCompatActivity() {
             Crashes::class.java
         )
 
-        _binding.calculateButton.setOnClickListener {
-            //throw Exception("Something wrong happened!")
-            Crashes.generateTestCrash()
+        with(_binding) {
+            calculateButton.setOnClickListener {
+                val interestRate = interestEditText.text.toString().toFloat()
+                val currentAge = ageEditText.text.toString().toInt()
+                val retirementAge = retirementEditText.text.toString().toInt()
+
+                if(interestRate <= 0) {
+                    Analytics.trackEvent("wrong_interest_rate")
+                }
+
+                if(retirementAge <= currentAge) {
+                    Analytics.trackEvent("wrong_age")
+                }
+            }
         }
     }
 }
