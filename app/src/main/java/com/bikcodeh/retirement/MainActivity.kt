@@ -1,0 +1,21 @@
+package com.bikcodeh.retirement
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import com.microsoft.appcenter.AppCenter
+import com.microsoft.appcenter.analytics.Analytics
+import com.microsoft.appcenter.crashes.Crashes
+
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        AppCenter.start(
+            application,
+            "1a6f5dd4-620b-42e4-8791-d4ae5f6f7319",
+            Analytics::class.java,
+            Crashes::class.java
+        )
+    }
+}
