@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
 
         AppCenter.start(
             application,
-            "1a6f5dd4-620b-42e4-8791-d4ae5f6f7319",
+            "10a41918-af79-4746-8add-2b8b3c772d1e",
             Analytics::class.java,
             Crashes::class.java
         )
@@ -47,6 +47,8 @@ class MainActivity : AppCompatActivity() {
                 if(retirementAge <= currentAge) {
                     Analytics.trackEvent("wrong_age", properties)
                 }
+
+                resultTextView.text = "At the current rate of $interestRate, saving $monthly with your current monthly savings you will have \$1,000,000 by 65."
             }
         }
     }
